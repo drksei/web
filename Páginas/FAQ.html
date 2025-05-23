@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinga Studios - Contacto</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css" />
+    <link rel="icon" type="image/png" href="../Imágenes/plinga.png">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="../index.html" class="logo">
+                <img src="../Imágenes/plinga.png" class="logo-img">
+                Plinga<span>Studios</span></a>  
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>         
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                    <li><a href="../Páginas/Juego.html">FNID</a></li>
+                    <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                    <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+                </ul>
+                <div id="menu-overlay"></div>
+            </nav>
+    </header>
+
+    <div class="main-content">
+        <section class="services" id="juego">
+        <div class="info-grid-title">
+            <h2>FAQ</h2>
+                <div class="title-underline"></div>
+        </div>
+        <div class="faq-container" id="faq"></div>       
+    </section>
+    </div>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <a class="footer_logo">Plinga<span>Studios</span></a>
+            <ul class="footer-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                <li><a href="../Páginas/Juego.html">FNID</a></li>
+                <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+            </ul>
+        </div>
+
+        <div class="paypal-support">
+            <a href="https://www.paypal.me/drkseidd" target="_blank" class="paypal-button">
+                <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" 
+                     alt="PayPal Icon" 
+                     class="paypal-icon">
+                Apoya vía PayPal
+            </a>
+        </div>               
+
+        <div class="footer-bottom">
+            <p>© 2025 Plinga Studios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector("nav ul");
+    const links = document.querySelectorAll("nav ul li a");
+    const navbar = document.getElementById("navbar");
+    const currentFile = window.location.pathname.split("/").pop();
+
+    links.forEach(link => {
+        const hrefFile = link.getAttribute("href").split("/").pop();
+        if (hrefFile === currentFile) {
+            link.classList.add("active");
+        }
+    });
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+            navbar.classList.add("menu-open");
+        } else {
+            navbar.classList.remove("menu-open");
+        }
+    });
+
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.classList.remove("active");
+            navbar.classList.remove("menu-open");
+        });
+    });
+
+    window.addEventListener("scroll", () => {
+        if (!navLinks.classList.contains("active")) {
+            if (window.scrollY > 10) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+    });
+
+    const allElements = document.querySelectorAll(
+        ".intro-joc-content *:not(script):not(style):not(link), " +
+        "main *:not(script):not(style):not(link), " +
+        "section:not(.intro-joc) *"
+    );
+
+    allElements.forEach(el => {
+        el.classList.add("fade-in");
+    });
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    allElements.forEach(el => {
+        appearOnScroll.observe(el);
+    });
+
+    const faqs = [
+        { pregunta: "¿Quién ha desarrollado el juego?", respuesta: "Five Nights in Darkness ha sido creado por Plinga Studios, un pequeño estudio independiente formado por apasionados de los juegos de terror." },
+        { pregunta: "¿Cuándo estará disponible el juego?", respuesta: "La versión final del juego está actualmente en desarrollo y trabajando para ofrecer la mejor experiencia posible. Mientras tanto, ya hemos publicado una demo jugable exclusiva para nuestra comunidad en Discord, donde puedes probar una parte del juego y darnos tu opinión. Anunciaremos la fecha oficial de lanzamiento del juego completo muy pronto." },
+        { pregunta: "¿Está disponible en varios idiomas?", respuesta: "Actualmente, el juego está disponible solo en inglés, pero estamos trabajando para ofrecerlo en varios idiomas para futuras actualizaciones." },
+        { pregunta: "¿Qué motor gráfico utiliza el juego?", respuesta: "Five Nights in Darkness ha sido desarrollado con el motor Godot Engine." },
+        { pregunta: "¿Funciona en móviles o solo en ordenadores?", respuesta: "El juego se encuentra disponible para Windows, Linux y Android. Estamos explorando opciones para llevarlo a iOS." },
+        { pregunta: "¿Cuánto cuesta el juego?", respuesta: "El juego es completamente gratuito, aunque puedes apoyar el proyecto mediante PayPal si lo deseas." },
+        { pregunta: "¿Cómo puedo descargar el juego?", respuesta: "Puedes descargar el juego directamente desde nuestra página oficial haciendo clic en el botón de descarga." },
+        { pregunta: "¿El juego da miedo de verdad?", respuesta: "Sí, es un juego de terror psicológico con escenas oscuras, sonidos inquietantes y sustos. No recomendado para personas sensibles." },
+        { pregunta: "¿Necesito conexión a internet para jugar?", respuesta: "No. Una vez descargado, el juego funciona completamente en modo offline." },
+        { pregunta: "¿Qué requisitos mínimos tiene el juego?", respuesta: "Sistema operativo Windows x64, Linux, Android, 1GB de RAM, 500MB de VRAM y al menos 100MB de espacio libre en disco." },
+        { pregunta: "¿Puedo hacer vídeos o retransmisiones del juego?", respuesta: "¡Sí! Nos encanta ver vuestro contenido. Puedes compartirlo libremente siempre que menciones a Plinga Studios." },
+        { pregunta: "¿El juego está basado en el FNAF oficial?", respuesta: "Sí, está basado en el juego original, pero con historia y mecánicas nuevas para ofrecer una experiencia diferente." },
+        { pregunta: "¿Tenéis pensado hacer más juegos?", respuesta: "Sí, Five Nights in Darkness es solo el comienzo. Ya estamos pensando futuros proyectos." },
+        { pregunta: "¿Cómo puedo contactar con vosotros?", respuesta: "Puedes unirte a nuestra comunidad en Discord, donde estaremos encantados de atender tus dudas y sugerencias." },
+        { pregunta: "¿Hay alguna forma de apoyar el proyecto?", respuesta: "¡Sí! Puedes hacer una donación vía PayPal para ayudarnos a seguir desarrollando contenido de calidad." }
+    ];
+
+    const faqContainer = document.getElementById('faq');
+    if (faqContainer) {
+        faqs.forEach(({ pregunta, respuesta }) => {
+            const faqItem = document.createElement('div');
+            faqItem.classList.add('faq-item');
+            faqItem.innerHTML = `
+                <button class="faq-question">
+                    <span class="icon">+</span>
+                    ${pregunta}
+                </button>
+                <div class="faq-answer" style="display:none;">
+                    <p>${respuesta}</p>
+                </div>
+            `;
+            faqContainer.appendChild(faqItem);
+        });
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('.icon');
+                const isOpen = button.classList.contains('open');
+
+                if (isOpen) {
+                    button.classList.remove('open');
+                    icon.textContent = '+';
+                    answer.style.display = 'none';
+                } else {
+                    button.classList.add('open');
+                    icon.textContent = '−';
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    }
+});
+</script>        
+</body>
+</html>

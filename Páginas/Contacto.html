@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinga Studios - Contacto</title>
+    <link rel="stylesheet" type="text/css" href="../css/Style.css" />
+    <link rel="icon" type="image/png" href="../Imágenes/plinga.png">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="../index.html" class="logo">
+                <img src="../Imágenes/plinga.png" class="logo-img">
+                Plinga<span>Studios</span>
+            </a>  
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>         
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                <li><a href="../Páginas/Juego.html">FNID</a></li>
+                <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+            </ul>
+            <div id="menu-overlay"></div>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <section class="services" id="joc">
+            <div class="info-grid-title">
+                <h2>Contacto</h2>
+                <div class="title-underline"></div>
+                <p class="info-subtitle">Contáctanos y envíanos tus propuestas.</p>
+            </div>
+        </section>
+
+        <div class="discord-widget">
+            <h3>Únete a nuestra comunidad</h3>
+            <iframe src="https://discord.com/widget?id=1359186733777948672&theme=dark" 
+                    width="350" height="500" allowtransparency="true" frameborder="0" 
+                    sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+            </iframe>
+        </div>
+    </div>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <a class="footer_logo">Plinga<span>Studios</span></a>
+            <ul class="footer-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                <li><a href="../Páginas/Juego.html">FNID</a></li>
+                <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+            </ul>
+        </div>
+    
+        <div class="paypal-support">
+            <a href="https://www.paypal.me/drkseidd" target="_blank" class="paypal-button">
+                <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" 
+                     alt="PayPal Icon" 
+                     class="paypal-icon">
+                Apóyanos vía PayPal
+            </a>
+        </div>               
+    
+        <div class="footer-bottom">
+            <p>© 2025 Plinga Studios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector("nav ul");
+        const links = document.querySelectorAll("nav ul li a");
+        const navbar = document.getElementById("navbar");
+        const currentFile = window.location.pathname.split("/").pop();
+
+        // Activar enlace actual
+        links.forEach(link => {
+            const hrefFile = link.getAttribute("href").split("/").pop();
+            if (hrefFile === currentFile) {
+                link.classList.add("active");
+            }
+        });
+
+        // Toggle menú móvil
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+                navbar.classList.add("menu-open");
+            } else {
+                navbar.classList.remove("menu-open");
+            }
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("active");
+                menuToggle.classList.remove("active");
+                navbar.classList.remove("menu-open");
+            });
+        });
+
+        // Scroll: fondo opaco si se hace scroll
+        window.addEventListener("scroll", () => {
+            if (!navLinks.classList.contains("active")) {
+                if (window.scrollY > 10) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            }
+        });
+
+        // Animaciones de aparición (fade-in)
+        const allElements = document.querySelectorAll(
+            ".intro-joc-content *:not(script):not(style):not(link), " +
+            "main *:not(script):not(style):not(link), " +
+            "section:not(.intro-joc) *"
+        );
+
+        allElements.forEach(el => {
+            el.classList.add("fade-in");
+        });
+
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
+
+        allElements.forEach(el => {
+            appearOnScroll.observe(el);
+        });
+    });
+    </script> 
+</body>
+</html>

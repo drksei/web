@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinga Studios - Nuestro juego</title>
+    <link rel="stylesheet" type="text/css" href="../css/Style.css" />
+    <link rel="icon" type="image/png" href="../Imágenes/plinga.png">
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <a href="../index.html" class="logo">
+                <img src="../Imágenes/plinga.png" class="logo-img" alt="Logo Plinga Studios">
+                Plinga<span>Studios</span></a>  
+                <div class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>         
+                <ul>
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                    <li><a href="../Páginas/Juego.html">FNID</a></li>
+                    <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                    <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+                </ul>
+                <div id="menu-overlay"></div>
+            </nav>
+    </header>
+
+    <div class="main-content">
+        <section class="intro-joc">
+            <div class="intro-joc-content">
+                <h1>FIVE NIGHTS IN DARKNESS</h1>
+                <p>Fanmade basado en Five Nights At Freddy's 1</p>
+            </div>
+            <div class="scroll-down">
+                <span></span>
+            </div>
+        </section>
+
+        <section class="hero" id="joc">
+        <div class="hero-content">
+            <h1>Five Nights in Darkness</h1>
+            <p><strong>Five Nights in Darkness</strong> es nuestro primer fanmade inspirado en el universo FNAF, creado con pasión y detalle para ofrecer una experiencia intensa e inmersiva de terror psicológico.</p>
+            <br>
+            <p>Adéntrate en un entorno oscuro y misterioso donde cada decisión cuenta. Con una ambientación cuidada, sonidos inquietantes y una jugabilidad clásica con toques innovadores, este juego te pondrá a prueba toda la noche.</p>
+            <br>
+            <div class="download-buttons">
+                <a href="../Juego/FNID_WINDOWS.zip" class="download-btn" download>
+                    🪟Windows
+                </a>
+                <a href="../Juego/FNID_LINUX.zip" class="download-btn" download>
+                    🐧Linux
+                </a>
+                <a href="../Juego/FNID_ANDROID.zip" class="download-btn" download>
+                    🤖Android
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="../Imágenes/Freddy.png" alt="Five Nights in Darkness" style="max-width: 300px; border-radius: 40px; border: solid; border-width: 4px; border-color: red; box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);">
+        </div>
+    </section>
+
+    <section class="services" id="joc">
+  <div class="info-grid-title">
+    <h2>Características del juego</h2>
+    <div class="title-underline"></div>
+  </div>
+
+  <div class="features">
+    <div class="feature-item">
+      <h3>Estilo clásico, esencia nueva</h3>
+      <img src="../Imágenes/Ataque.png" alt="Estilo clásico, esencia nueva">
+      <p>Un homenaje a FNAF 1 con nuevas mecánicas que aportan frescura y estrategia.</p>
+    </div>
+
+    <div class="feature-item">
+      <h3>Atmósfera inmersiva</h3>
+      <img src="../Imágenes/Camaras.png" alt="Atmósfera inmersiva">
+      <p>Sonidos, luces y diseño visual pensados para generar tensión y mantenerte alerta.</p>
+    </div>
+
+    <div class="feature-item">
+      <h3>Desarrollado con amor</h3>
+      <img src="../Imágenes/AtaqueBonny.png" alt="Desarrollado con amor">
+      <p>Todo el proyecto ha sido creado por fans y para fans. Gracias por formar parte de esta aventura.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+    </div>
+
+    <footer id="contacto">
+        <div class="footer-content">
+            <a class="footer_logo">Plinga<span>Studios</span></a>
+            <ul class="footer-links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Páginas/Sobre_nosotros.html">Quiénes somos</a></li>
+                <li><a href="../Páginas/Juego.html">FNID</a></li>
+                <li><a href="../Páginas/Contacto.html">Contacto</a></li>
+                <li><a href="../Páginas/FAQ.html">FAQ</a></li>
+            </ul>
+        </div>
+    
+        <!-- BOTÓN PAYPAL AÑADIDO AQUÍ -->
+        <div class="paypal-support">
+            <a href="https://www.paypal.me/drkseidd" target="_blank" class="paypal-button">
+                <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" 
+                     alt="Icono de PayPal" 
+                     class="paypal-icon">
+                Apoya vía PayPal
+            </a>
+        </div>               
+    
+        <div class="footer-bottom">
+            <p>© 2025 Plinga Studios. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // --- Navbar y menú toggle ---
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector("nav ul");
+    const links = document.querySelectorAll("nav ul li a");
+    const navbar = document.getElementById("navbar");
+    const currentFile = window.location.pathname.split("/").pop();
+
+    // Marca enlace activo
+    links.forEach(link => {
+        const hrefFile = link.getAttribute("href").split("/").pop();
+        if (hrefFile === currentFile) {
+            link.classList.add("active");
+        }
+    });
+
+    // Toggle menú y animación "X" + clase menu-open para navbar fondo opaco
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+            navbar.classList.add("menu-open");
+        } else {
+            navbar.classList.remove("menu-open");
+        }
+    });
+
+    // Cerrar menú en móvil al clicar un enlace
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuToggle.classList.remove("active");
+            navbar.classList.remove("menu-open");
+        });
+    });
+
+    // Cuando haces scroll, si el menú está cerrado, vuelve el fondo transparente
+    window.addEventListener("scroll", () => {
+        if (!navLinks.classList.contains("active")) {
+            if (window.scrollY > 10) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+    });
+
+    // --- FADES ---
+    // Seleccionamos todos los elementos menos script, style, link
+    const allElements = document.querySelectorAll(
+        ".intro-joc-content *:not(script):not(style):not(link), " +
+        "main *:not(script):not(style):not(link), " +
+        "section:not(.intro-joc) *"
+    );
+
+    allElements.forEach(el => {
+        el.classList.add("fade-in");
+    });
+
+    const appearOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    allElements.forEach(el => {
+        appearOnScroll.observe(el);
+    });
+});
+</script>
+</body>
+</html>
